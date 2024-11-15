@@ -1,0 +1,12 @@
+<h1>Edit Widget</h1>
+<%= form_with(model: @widget, local: true) do |form| %>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+    <%= form.label :price %>
+    <%= form.number_field :price, step: 0.01 %>
+  </div>
+  <%= form.submit "Update Widget" %>
+<% end %>

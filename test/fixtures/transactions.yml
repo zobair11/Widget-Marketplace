@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  seller: one
+  buyer: one
+  widget: one
+  marketplace_fee: 9.99
+
+two:
+  seller: two
+  buyer: two
+  widget: two
+  marketplace_fee: 9.99

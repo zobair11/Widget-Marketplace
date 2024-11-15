@@ -1,0 +1,12 @@
+<h1>New Transaction</h1>
+<%= form_with(model: @transaction, local: true) do |form| %>
+  <div>
+    <%= form.label :buyer_id %>
+    <%= form.number_field :buyer_id %>
+  </div>
+  <div>
+    <%= form.label :widget_id %>
+    <%= form.number_field :widget_id %>
+  </div>
+  <%= form.submit "Create Transaction" %>
+<% end %>

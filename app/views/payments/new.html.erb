@@ -1,0 +1,24 @@
+<h1>Make a Deposit</h1>
+<%= form_with url: payments_path, method: :post do |form| %>
+  <div>
+    <%= form.label :card_number, 'Card Number' %>
+    <%= form.text_field :card_number, placeholder: 'Card Number', required: true %>
+  </div>
+  <div>
+    <%= form.label :expiry_month, 'Expiry Month (MM)' %>
+    <%= form.text_field :expiry_month, placeholder: 'MM', required: true %>
+  </div>
+  <div>
+    <%= form.label :expiry_year, 'Expiry Year (YY)' %>
+    <%= form.text_field :expiry_year, placeholder: 'YY', required: true %>
+  </div>
+  <div>
+    <%= form.label :cvc, 'CVC' %>
+    <%= form.text_field :cvc, placeholder: '123', required: true %>
+  </div>
+  <div>
+    <%= form.label :amount, 'Amount (USD)' %>
+    <%= form.number_field :amount, step: 0.01, required: true %>
+  </div>
+  <%= form.submit 'Submit Payment' %>
+<% end %>

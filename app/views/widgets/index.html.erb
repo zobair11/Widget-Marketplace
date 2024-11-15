@@ -1,0 +1,29 @@
+<h1>Available Widgets</h1>
+<ul>
+  <% @available_widgets.each do |widget| %>
+    <li>
+      <%= link_to widget.description, widget_path(widget) %> - $<%= widget.price %>
+    </li>
+  <% end %>
+</ul>
+
+<h1>My Widgets</h1>
+<%= link_to "New Widget", new_widget_path %>
+<ul>
+  <% @my_widgets.each do |widget| %>
+    <li>
+      <%= widget.description %> - $<%= widget.price %>
+      <%= button_to "Edit", edit_widget_path(widget), method: :get, data: { turbo: false } %>
+      <%= button_to "Delete", widget_path(widget), method: :delete, data: { turbo: false } %>
+    </li>
+  <% end %>
+</ul>
+
+<h1>Bought Widgets</h1>
+<ul>
+  <% @bought_widgets.each do |widget| %>
+    <li>
+      <%= widget.description %> - $<%= widget.price %>
+    </li>
+  <% end %>
+</ul>

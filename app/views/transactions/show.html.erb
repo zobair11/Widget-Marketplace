@@ -1,0 +1,6 @@
+<h1>Transaction Details</h1>
+<p>Buyer: <%= @transaction.buyer.first_name %></p>
+<p>Seller: <%= @transaction.seller.first_name %></p>
+<p>Widget: <%= @transaction.widget.description %></p>
+<p>Price: $<%= @transaction.widget.price %></p>
+<p>Marketplace Fee: $<%= @transaction.marketplace_fee %></p>

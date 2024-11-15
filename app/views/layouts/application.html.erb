@@ -11,6 +11,31 @@
   </head>
 
   <body>
-    <%= yield %>
+  <header>
+    <h1>Widget Marketplace</h1>
+    <% if user_signed_in? %>
+      <p>Welcome, <%= current_user.first_name %>!</p>
+      <p>Available Balance: <%= number_to_currency(@current_user_balance, unit: "$") %></p>
+      <%= link_to "Make a Deposit", new_payment_path, class: "btn btn-primary" %>
+      <% if current_user.admin? %>
+        <p>Total Platform Fee Collected: <%= number_to_currency(@total_platform_fee, unit: "$") %></p>
+      <% end %>
+      <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path %> |
+      <%= link_to "Sign Up", new_user_registration_path %>
+    <% end %>
+  </header>
+  <% if flash[:notice] %>
+    <div style="color: green; margin: 10px 0;">
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash[:alert] %>
+    <div style="color: red; margin: 10px 0;">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+  <div id="warning-banner"></div>
+  <%= yield %>
   </body>
 </html>
