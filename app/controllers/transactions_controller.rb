@@ -1,6 +1,4 @@
 class TransactionsController < ApplicationController
-  before_action :authenticate_user!
-
   def create
     result = TransactionProcessor.new(current_user, params[:widget_id]).process
 
