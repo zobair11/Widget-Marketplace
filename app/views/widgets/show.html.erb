@@ -1,0 +1,11 @@
+<h1><%= @widget.description %></h1>
+<p>Price: $<%= @widget.price %></p>
+<p>Seller: <%= @widget.seller.first_name %></p>
+<% if @widget %>
+  <%= button_to "Buy Widget", transactions_path(widget_id: @widget.id),
+                method: :post,
+                data: { turbo_confirm: "Are you sure you want to buy this widget?" },
+                class: "button-class" %>
+<% else %>
+  <p>This widget has already been sold.</p>
+<% end %>

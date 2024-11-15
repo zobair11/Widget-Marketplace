@@ -1,0 +1,8 @@
+<h1>All Transactions</h1>
+<ul>
+  <% @transactions.each do |transaction| %>
+    <li>
+      Buyer: <%= transaction.buyer.first_name %> - Widget: <%= transaction.widget.description %> - $<%= transaction.widget.price %>
+    </li>
+  <% end %>
+</ul>

@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Devise routes for authentication
+  devise_for :users
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :widgets
+  resources :payments, only: [:new, :create]
+
+  resources :transactions, only: [:index, :show, :new, :create]
+
+  resource :balance, only: [:show]
+
+  # Root path
+  root to: 'widgets#index' # Home page shows available widgets
 end
