@@ -1,9 +1,8 @@
 class User < ApplicationRecord
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :balance, class_name: 'Balance', dependent: :destroy
+  has_one :balance, dependent: :destroy
   has_many :widgets, foreign_key: 'seller_id', dependent: :destroy
   has_many :payments, dependent: :destroy
   has_many :transactions_as_seller, class_name: 'Transaction', foreign_key: 'seller_id', dependent: :destroy
@@ -17,10 +16,6 @@ class User < ApplicationRecord
 
   def current_balance
     balance.balance
-  end
-
-  def has_sufficient_balance?(amount)
-    balance.balance >= amount
   end
 
   private

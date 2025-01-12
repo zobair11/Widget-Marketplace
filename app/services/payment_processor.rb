@@ -19,7 +19,7 @@ class PaymentProcessor
     Result.success
   rescue Stripe::CardError => e
     Result.failure(e.message)
-  rescue => e
+  rescue StandardError
     Result.failure('Something went wrong. Please try again.')
   end
 
@@ -31,8 +31,8 @@ class PaymentProcessor
                              number: @card_number,
                              exp_month: @expiry_month,
                              exp_year: @expiry_year,
-                             cvc: @cvc,
-                           },
+                             cvc: @cvc
+                           }
                          })
   end
 
@@ -41,14 +41,14 @@ class PaymentProcessor
                             amount: (@amount * 100).to_i,
                             currency: 'usd',
                             source: token.id,
-                            description: "Deposit by #{@user.email}",
+                            description: "Deposit by #{@user.email}"
                           })
   end
 
   def create_payment_record
     Payment.create!(
       user: @user,
-      amount: @amount,
-      )
+      amount: @amount
+    )
   end
 end

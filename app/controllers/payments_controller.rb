@@ -1,8 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :authenticate_user!
-
-  def new
-  end
+  def new; end
 
   def create
     result = PaymentProcessor.new(current_user, payment_params).process

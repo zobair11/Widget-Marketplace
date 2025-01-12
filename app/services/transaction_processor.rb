@@ -17,7 +17,7 @@ class TransactionProcessor
     Result.success
   rescue ActiveRecord::RecordInvalid => e
     Result.failure(e.message)
-  rescue => e
+  rescue => _e
     Result.failure('Something went wrong. Please try again.')
   end
 
